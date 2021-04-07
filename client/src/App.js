@@ -7,6 +7,7 @@ function App() {
   const [nome, setNome] = useState("");
   const [descricao, setDescricao] = useState("");
   const [localizacao, setLocalizacao] = useState("");
+  const [complemento, setComplemento] = useState("");
   const [cidade, setCidade] = useState("");
   const [uf, setUf] = useState("");
 
@@ -46,6 +47,12 @@ function App() {
         <label>Localização: </label>
         <input type="text" name="localizacao" onChange={(e) => {
           setLocalizacao(e.target.value)
+        }}
+        />
+
+        <label>Complemento: </label>
+        <input type="text" name="complemento" onChange={(e) => {
+          setComplemento(e.target.value)
         }}
         />
 

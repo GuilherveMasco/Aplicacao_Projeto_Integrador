@@ -22,12 +22,17 @@ app.post('/api/insert', (req, res) => {
     const nome = req.body.nome;
     const descricao = req.body.descricao;
     const localizacao = req.body.localizacao;
+    const complemento = req.body.complemento;
     const cidade = req.body.cidade;
     const uf = req.body.uf;
 
-    const sqlInsert = "INSERT INTO local (nome, descricao, localizacao, cidade, uf) VALUES (?, ?, ?, ?, ?);";
-    db.query(sqlInsert, [nome, descricao, localizacao, cidade, uf], (err, result) => {
-        console.log(result);
+    const sqlInsert = "INSERT INTO local (nome, descricao, localizacao, complemento, cidade, uf) VALUES (?, ?, ?, ?, ?, ?);";
+    db.query(sqlInsert, [nome, descricao, localizacao, complemento, cidade, uf], (err, result) => {
+        if(!err){
+            res.json({ nome, descricao, localizacao, complemento, cidade, uf })
+        }else{
+            res.status(400).json({ status: "bad request" })
+        }
     });
 });
 
