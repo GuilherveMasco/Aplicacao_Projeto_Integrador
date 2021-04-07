@@ -1,5 +1,5 @@
 -- MySQL Workbench Synchronization
--- Generated: 2021-04-06 21:20
+-- Generated: 2021-04-07 14:49
 -- Model: New Model
 -- Version: 1.0
 -- Project: Name of the project
@@ -8,6 +8,7 @@
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
 CREATE DATABASE IF NOT EXISTS turistandodb;
 CREATE TABLE IF NOT EXISTS `turistandodb`.`Local` (
   `idLocal` INT(11) NOT NULL AUTO_INCREMENT,
@@ -39,17 +40,9 @@ DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `turistandodb`.`Imagem` (
   `idImagem` INT(11) NOT NULL AUTO_INCREMENT,
   `imagem` MEDIUMBLOB NOT NULL,
-  `Comentario_idComentario` INT(11) NOT NULL,
-  `Comentario_Local_idLocal` INT(11) NOT NULL,
   `Local_idLocal` INT(11) NOT NULL,
-  PRIMARY KEY (`idImagem`, `Comentario_idComentario`, `Comentario_Local_idLocal`, `Local_idLocal`),
-  INDEX `fk_Imagem_Comentario1_idx` (`Comentario_idComentario` ASC, `Comentario_Local_idLocal` ASC) VISIBLE,
+  PRIMARY KEY (`idImagem`, `Local_idLocal`),
   INDEX `fk_Imagem_Local1_idx` (`Local_idLocal` ASC) VISIBLE,
-  CONSTRAINT `fk_Imagem_Comentario1`
-    FOREIGN KEY (`Comentario_idComentario` , `Comentario_Local_idLocal`)
-    REFERENCES `turistandodb`.`Comentario` (`idComentario` , `Local_idLocal`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_Imagem_Local1`
     FOREIGN KEY (`Local_idLocal`)
     REFERENCES `turistandodb`.`Local` (`idLocal`)
