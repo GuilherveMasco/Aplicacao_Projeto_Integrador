@@ -9,7 +9,7 @@ const db = mysql.createPool({
     port: 3306,
     user: "root",
     password: "root",
-    database: "turistandodb",
+    database: "meuguiadb",
     insecureAuth : true
 });
 
@@ -22,14 +22,14 @@ app.post('/api/insert', (req, res) => {
     const nome = req.body.nome;
     const descricao = req.body.descricao;
     const localizacao = req.body.localizacao;
-    const complemento = req.body.complemento;
+    const referencia = req.body.referencia;
     const cidade = req.body.cidade;
     const uf = req.body.uf;
 
-    const sqlInsert = "INSERT INTO local (nome, descricao, localizacao, complemento, cidade, uf) VALUES (?, ?, ?, ?, ?, ?);";
-    db.query(sqlInsert, [nome, descricao, localizacao, complemento, cidade, uf], (err, result) => {
+    const sqlInsert = "INSERT INTO Local (nome, descricao, localizacao, referencia, Cidade_idCidade) VALUES (?, ?, ?, ?, (SELECT(idCidade) FROM Cidade WHERE nome = ? AND uf = ?));";
+    db.query(sqlInsert, [nome, descricao, localizacao, referencia, cidade, uf], (err, result) => {
         if(!err){
-            res.json({ nome, descricao, localizacao, complemento, cidade, uf })
+            res.json({ nome, descricao, localizacao, referencia, cidade, uf})
         }else{
             res.status(400).json({ status: "bad request" })
         }

@@ -7,14 +7,15 @@ function App() {
   const [nome, setNome] = useState("");
   const [descricao, setDescricao] = useState("");
   const [localizacao, setLocalizacao] = useState("");
-  const [complemento, setComplemento] = useState("");
+  const [referencia, setReferencia] = useState("");
   const [cidade, setCidade] = useState("");
   const [uf, setUf] = useState("");
 
   const submitLocal = () => {
     Axios.post("http://localhost:3001/api/insert", {nome: nome,
     descricao: descricao,
-    localizacao: localizacao, 
+    localizacao: localizacao,
+    referencia: referencia, 
     cidade: cidade,
     uf: uf}).then(() => {
       alert("Cadastrado com sucesso!");
@@ -24,7 +25,7 @@ function App() {
   return (
     <div className="App">
       <div>
-        <h1>TURISTANDO</h1>
+        <h1>MeuGuia</h1>
         <h2>testapp</h2>
       </div>
       <div>
@@ -50,9 +51,9 @@ function App() {
         }}
         />
 
-        <label>Complemento: </label>
-        <input type="text" name="complemento" onChange={(e) => {
-          setComplemento(e.target.value)
+        <label>Ponto de referência: </label>
+        <input type="text" name="referencia" onChange={(e) => {
+          setReferencia(e.target.value)
         }}
         />
 
