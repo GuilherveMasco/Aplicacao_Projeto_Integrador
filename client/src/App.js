@@ -10,6 +10,7 @@ function App() {
   const [referencia, setReferencia] = useState("");
   const [cidade, setCidade] = useState("");
   const [uf, setUf] = useState("");
+  const [tags, setTags] = useState("");
 
   const submitLocal = () => {
     Axios.post("http://localhost:3001/api/insert", {nome: nome,
@@ -17,7 +18,8 @@ function App() {
     localizacao: localizacao,
     referencia: referencia, 
     cidade: cidade,
-    uf: uf}).then(() => {
+    uf: uf,
+    tags: tags}).then(() => {
       alert("Cadastrado com sucesso!");
     });
   };
@@ -66,6 +68,12 @@ function App() {
         <label>UF: </label>
         <input type="text" name="uf" onChange={(e) => {
           setUf(e.target.value)
+        }}
+        />
+
+        <label>Tags (separadas por vírgula): </label>
+        <input type="text" name="tags" onChange={(e) => {
+          setTags(e.target.value)
         }}
         />
 
