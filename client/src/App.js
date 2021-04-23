@@ -11,15 +11,22 @@ function App() {
   const [uf, setUf] = useState("");
   const [tags, setTags] = useState("");
   const [localsList, setLocalsList] = useState([]);
+  const [buscaCidade, setBuscaCidade] = useState("");
 
   const getSearch = () => {
     Axios.get("http://localhost:3001/api/get", {
-      localsList: localsList,
+      params: {
+        buscaCidade: buscaCidade,
+      },
     }).then((res) => {
-      const listLocals = res.data.map((local) =>{
-        return <h6 key={local.nome}>Local: {local.nome} | Descrição: {local.descricao}</h6>
-      })
-      setLocalsList(listLocals)
+      const listLocals = res.data.map((local) => {
+        return (
+          <h6 key={local.nome}>
+            Local: {local.nome} | Descrição: {local.descricao}
+          </h6>
+        );
+      });
+      setLocalsList(listLocals);
     });
   };
 
@@ -36,7 +43,7 @@ function App() {
       alert("Cadastrado com sucesso!");
     });
   };
-  
+
   return (
     <div className="App">
       <div>
@@ -47,7 +54,10 @@ function App() {
         <label>Buscar </label>
         <input
           type="text"
-          name="busca"
+          name="buscaCidade"
+          onChange={(e) => {
+            setBuscaCidade(e.target.value);
+          }}
         />
 
         <button onClick={getSearch}>Buscar</button>

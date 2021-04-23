@@ -17,9 +17,12 @@ app.use(express.json());
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/api/get", (get, res) => {
-  const sqlSelect = "SELECT * FROM local";
-  db.query(sqlSelect, (err, result) => {
+app.get("/api/get", (req, res) => {
+  var cidade = req.query.buscaCidade;
+  cidade = "%" + cidade + "%";
+  console.log(cidade)
+  const sqlSelect = "SELECT * FROM local WHERE Cidade_idCidade = (SELECT idCidade FROM Cidade WHERE nome LIKE ?);";
+  db.query(sqlSelect, [cidade], (err, result) => {
     res.send(result);
   });
 });
