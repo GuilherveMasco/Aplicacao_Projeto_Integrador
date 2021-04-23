@@ -1,12 +1,16 @@
 # Aplicacao de Projeto Integrador
-Área de testes e pré-construção da aplicação para aulas de Projeto Integrador
+Aplicativo "MeuGuia" para auxilio de localização e compartilhamento de pontos turísticos.
 
 ## Execução:
 - Crie o banco de dados na pasta database através do script SQL
-- Acesse a pasta server e execute com npm run dev
-- Acesse a pasta client e execute com npm start
+- Acesse a pasta server
+- Construa o servidor com o comando npm install
+- Execute o servidor com o comando npm run dev
+- Acesse a pasta client
+- Execute o cliente com o comando npm start
+- Construa o cliente com o comando npm install
 
-A página frontend de teste deverá abrir automáticamente no sue navegador, caso contrário, acesse ela por http://localhost:3000
+A página do site deverá abrir automáticamente no seu navegador, caso contrário, acesse ela por http://localhost:3000
 O servidor está alocado em http://localhost:3001
 
-Caso não seja possível executar, entre em contato.
+Em caso de dúvidas, contate os desenvolvedores.
