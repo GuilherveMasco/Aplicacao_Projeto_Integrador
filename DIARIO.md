@@ -80,7 +80,7 @@
   
   Não, apenas pouco tempo para codificação.
   
-  ## Reunião 04 - 23/04/2021
+  ## Reunião 04 - 27/04/2021
 
 ### Resumo:
   Nesta reunião discutimos algumas alteraçõs na estrutura do servidor utilizado e a divisão dos trabalhos até a próxima reunião.
