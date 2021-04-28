@@ -61,7 +61,7 @@
 #### Guilherme Bernardo Del Rio
   - O que eu fiz ontem que ajudou o Time de Desenvolvimento a atender a meta da Sprint? 
   
-  Conclui os traalhos propostos na issue 1 e 2.
+  Conclui os trabalhos propostos na issue 1 e 2.
   - O que eu farei hoje para ajudar o Time de Desenvolvimento atender a meta da Sprint?
   
   Começarei a estudar os testes com jest do backend na issue 1 e 2.
@@ -79,3 +79,30 @@
   - Eu vejo algum obstáculo que impeça a mim ou o Time de Desenvolvimento no atendimento da meta da Sprint?
   
   Não, apenas pouco tempo para codificação.
+  
+  ## Reunião 04 - 23/04/2021
+
+### Resumo:
+  Nesta reunião discutimos algumas alteraçõs na estrutura do servidor utilizado e a divisão dos trabalhos até a próxima reunião.
+
+#### Guilherme Bernardo Del Rio
+  - O que eu fiz ontem que ajudou o Time de Desenvolvimento a atender a meta da Sprint? 
+  
+  Comecei a implementação dos testes em Jest, e alterei a estrutura do servidor.
+  - O que eu farei hoje para ajudar o Time de Desenvolvimento atender a meta da Sprint?
+  
+  Continuarei a implementação dos testes. nas issues 1 e 2.
+  - Eu vejo algum obstáculo que impeça a mim ou o Time de Desenvolvimento no atendimento da meta da Sprint?
+  
+  Vejo alguma dificuldade na implementação com Jest.
+ 
+#### Guilherme Vasco da Silva
+  - O que eu fiz ontem que ajudou o Time de Desenvolvimento a atender a meta da Sprint? 
+  
+  Desenvolvi as telas que utilizaremos e comecei a converter elas de HTML para React JS.
+  - O que eu farei hoje para ajudar o Time de Desenvolvimento atender a meta da Sprint?
+  
+  Voltarei ao desenvolvimento da issue, para ter sua funcionalidade pronta antes de terminar a adaptação das telas.
+  - Eu vejo algum obstáculo que impeça a mim ou o Time de Desenvolvimento no atendimento da meta da Sprint?
+  
+  Converter o HTML com Bootstrap diretamente para React tem se mostrado uma tarefa bem mais complexa do que o esperado.
