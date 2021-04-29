@@ -10,28 +10,47 @@ function App() {
   const [cidade, setCidade] = useState("");
   const [uf, setUf] = useState("");
   const [tags, setTags] = useState("");
-  const [localsList, setLocalsList] = useState([]);
+  const [localsListCidade, setLocalsListCidade] = useState([]);
   const [buscaCidade, setBuscaCidade] = useState("");
+  const [buscaTag, setBuscaTag] = useState("");
+  const [localsListTag, setLocalsListTag] = useState([]);
 
-  const getSearch = () => {
-    Axios.get("http://localhost:3001/api/get", {
+  const getSearchCidade = () => {
+    Axios.get("http://localhost:3001/api/getCidade", {
       params: {
         buscaCidade: buscaCidade,
       },
     }).then((res) => {
-      const listLocals = res.data.map((local) => {
+      const listLocalsCidade = res.data.map((local) => {
         return (
           <h6 key={local.nome}>
             Local: {local.nome} | Descrição: {local.descricao}
           </h6>
         );
       });
-      setLocalsList(listLocals);
+      setLocalsListCidade(listLocalsCidade);
+    });
+  };
+
+  const getSearchTag = () => {
+    Axios.get("http://localhost:3001/api/getTag", {
+      params: {
+        buscaTag: buscaTag,
+      },
+    }).then((res) => {
+      const listLocalsTag = res.data.map((local) => {
+        return (
+          <h6 key={local.nome}>
+            Local: {local.nome} | Descrição: {local.descricao}
+          </h6>
+        );
+      });
+      setLocalsListTag(listLocalsTag);
     });
   };
 
   const submitLocal = () => {
-    Axios.post("http://localhost:3001/api/insert", {
+    Axios.post("http://localhost:3001/api/insertLocal", {
       nome: nome,
       descricao: descricao,
       localizacao: localizacao,
@@ -51,6 +70,7 @@ function App() {
         <h2>testapp</h2>
       </div>
       <div className="form">
+        <h3>Buscar por Cidade</h3>
         <label>Buscar </label>
         <input
           type="text"
@@ -60,10 +80,27 @@ function App() {
           }}
         />
 
-        <button onClick={getSearch}>Buscar</button>
+        <button onClick={getSearchCidade}>Buscar</button>
         <div>
-          <h1>{localsList}</h1>
+          <h1>{localsListCidade}</h1>
         </div>
+
+        <h3>Buscar por Tag</h3>
+        <label>Buscar </label>
+        <input
+          type="text"
+          name="buscaTag"
+          onChange={(e) => {
+            setBuscaTag(e.target.value);
+          }}
+        />
+
+        <button onClick={getSearchTag}>Buscar</button>
+
+        <div>
+          <h1>{localsListTag}</h1>
+        </div>
+
         <div>
           <h3>Cadastro de local</h3>
         </div>

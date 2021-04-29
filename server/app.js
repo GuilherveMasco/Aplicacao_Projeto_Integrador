@@ -8,7 +8,7 @@ const db = mysql.createPool({
     host: "localhost",
     port: 3306,
     user: "root",
-    password: "password",
+    password: "root",
     database: "meuguiadb",
     insecureAuth: true,
   });
@@ -17,17 +17,27 @@ const db = mysql.createPool({
   app.use(cors());
   app.use(bodyParser.urlencoded({ extended: true }));
   
-  app.get("/api/get", (req, res) => {
+  app.get("/api/getCidade", (req, res) => {
     var cidade = req.query.buscaCidade;
     cidade = "%" + cidade + "%";
-    console.log(cidade)
+    //console.log(cidade)
     const sqlSelect = "SELECT * FROM local WHERE Cidade_idCidade = (SELECT idCidade FROM Cidade WHERE nome LIKE ?);";
     db.query(sqlSelect, [cidade], (err, result) => {
       res.send(result);
     });
   });
+
+  app.get("/api/getTag", (req, res) => {
+    var tag = req.query.buscaTag;
+    tag = "%" + tag + "%";
+    //console.log(tag)
+    const sqlSelect = "SELECT * FROM local WHERE idLocal = (SELECT Local_idLocal FROM local_has_tag WHERE Tag_idTag = (SELECT idTag FROM tag WHERE nome LIKE ?));";
+    db.query(sqlSelect, [tag], (err, result) => {
+      res.send(result);
+    });
+  });
   
-  app.post("/api/insert", (req, res) => {
+  app.post("/api/insertLocal", (req, res) => {
     const nome = req.body.nome;
     const descricao = req.body.descricao;
     const localizacao = req.body.localizacao;
