@@ -106,3 +106,30 @@
   - Eu vejo algum obstáculo que impeça a mim ou o Time de Desenvolvimento no atendimento da meta da Sprint?
   
   Converter o HTML com Bootstrap diretamente para React tem se mostrado uma tarefa bem mais complexa do que o esperado.
+  
+ ## Reunião 05 - 30/04/2021
+
+### Resumo:
+  Nesta reunião trabalhamos na implementação das issues.
+
+#### Guilherme Bernardo Del Rio
+  - O que eu fiz ontem que ajudou o Time de Desenvolvimento a atender a meta da Sprint? 
+  
+  Continuei a implementação dos testes e alterei a estrutura do código para aumentar a segunrança do servidor.
+  - O que eu farei hoje para ajudar o Time de Desenvolvimento atender a meta da Sprint?
+  
+  Continuarei a implementação dos testes.
+  - Eu vejo algum obstáculo que impeça a mim ou o Time de Desenvolvimento no atendimento da meta da Sprint?
+  
+  Não.
+ 
+#### Guilherme Vasco da Silva
+ - O que eu fiz ontem que ajudou o Time de Desenvolvimento a atender a meta da Sprint? 
+ 
+ Completei a funcionabilidade de pesquisa por tag (issue 8)
+ - O que eu farei hoje para ajudar o Time de Desenvolvimento atender a meta da Sprint?
+
+ Conectar o frontend ao backend e estudar a issue 6
+ - Eu vejo algum obstáculo que impeça a mim ou o Time de Desenvolvimento no atendimento da meta da Sprint?
+
+ Não houveram dificuldades essa somente, somente a crescente falta de tempo para trabalhar nos códigos.
