@@ -1,78 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
-import Axios from "axios";
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Switch, Link, Redirect } from "react-router-dom";
 
-function App() {
+import MainPage from "./pages/index";
+import Tags from "./pages/tags";
+import Cidades from "./pages/cidades";
+import Admin from "./pages/admin";
+import Contato from "./pages/contato";
+import Local from "./pages/local";
 
-  const [nome, setNome] = useState("");
-  const [descricao, setDescricao] = useState("");
-  const [localizacao, setLocalizacao] = useState("");
-  const [referencia, setReferencia] = useState("");
-  const [cidade, setCidade] = useState("");
-  const [uf, setUf] = useState("");
-
-  const submitLocal = () => {
-    Axios.post("http://localhost:3001/api/insert", {nome: nome,
-    descricao: descricao,
-    localizacao: localizacao,
-    referencia: referencia, 
-    cidade: cidade,
-    uf: uf}).then(() => {
-      alert("Cadastrado com sucesso!");
-    });
-  };
-
-  return (
-    <div className="App">
-      <div>
-        <h1>MeuGuia</h1>
-        <h2>testapp</h2>
-      </div>
-      <div>
-        <h3>Cadastro de local</h3>
-      </div>
-      <div className="form">
-
-        <label>Nome: </label>
-        <input type="text" name="nome" onChange={(e) => {
-          setNome(e.target.value)
-        }}
-        />
-
-        <label>Descrição: </label>
-        <input type="text" name="descricao" onChange={(e) => {
-          setDescricao(e.target.value)
-        }}
-        />
-
-        <label>Localização: </label>
-        <input type="text" name="localizacao" onChange={(e) => {
-          setLocalizacao(e.target.value)
-        }}
-        />
-
-        <label>Ponto de referência: </label>
-        <input type="text" name="referencia" onChange={(e) => {
-          setReferencia(e.target.value)
-        }}
-        />
-
-        <label>Cidade: </label>
-        <input type="text" name="cidade" onChange={(e) => {
-          setCidade(e.target.value)
-        }}
-        />
-
-        <label>UF: </label>
-        <input type="text" name="uf" onChange={(e) => {
-          setUf(e.target.value)
-        }}
-        />
-
-        <button onClick={submitLocal}>Cadastrar</button>
-      </div>
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <Router>
+        <Switch>
+          <Route exact path="/" component={MainPage} />
+          <Route exact path="/tags" component={Tags} />
+          <Route exact path="/cidades" component={Cidades} />
+          <Route exact path="/admin" component={Admin} />
+          <Route exact path="/contato" component={Contato} />
+          <Route exact path="/local" component={Local} />
+        </Switch>      
+      </Router>
+    );
+  }
 }
 
 export default App;
