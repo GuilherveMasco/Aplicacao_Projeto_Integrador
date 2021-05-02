@@ -31,7 +31,7 @@ const db = mysql.createPool({
     var tag = req.query.buscaTag;
     tag = "%" + tag + "%";
     //console.log(tag)
-    const sqlSelect = "SELECT * FROM local WHERE idLocal = (SELECT Local_idLocal FROM local_has_tag WHERE Tag_idTag = (SELECT idTag FROM tag WHERE nome LIKE ?));";
+    const sqlSelect = "SELECT Local.idLocal, Local.nome, Local.descricao, Local.localizacao, Local.referencia, Local.Cidade_idCidade FROM Local, local_has_tag WHERE Local.idLocal = local_has_tag.Local_idLocal AND local_has_tag.Tag_idTag = (SELECT idTag FROM tag WHERE nome LIKE ?);";
     db.query(sqlSelect, [tag], (err, result) => {
       res.send(result);
     });
@@ -75,6 +75,19 @@ const db = mysql.createPool({
         }
       });
     }
+  });
+
+  app.post("/api/insertCidade", (req, res) => {
+    const nome = req.body.nome;
+    const uf = req.body.uf;
+    const sqlCidade = "INSERT INTO Cidade (nome, uf) VALUES (?, ?);";
+    db.query(sqlCidade, [nome, uf], (err, result) => {
+      if (!err) {
+        res.json({ nome, uf });
+      } else {
+        //res.status(400).json({ status: "bad request" });
+      }
+    });
   });
 
 module.exports = app;
