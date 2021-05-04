@@ -24,6 +24,7 @@ const db = mysql.createPool({
     const sqlSelect = "SELECT * FROM local WHERE Cidade_idCidade = (SELECT idCidade FROM Cidade WHERE nome LIKE ?);";
     db.query(sqlSelect, [cidade], (err, result) => {
       res.send(result);
+      console.log(result)
     });
   });
   
