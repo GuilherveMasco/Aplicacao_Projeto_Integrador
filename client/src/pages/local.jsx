@@ -29,20 +29,20 @@ const Local = () => {
     <div className="App">
         <body>
         <Header></Header>
-        <main class="page contact-us-page">
-            <section class="clean-block clean-form dark">
-                <div class="container">
-                    <div class="block-heading">
-                        <h2>Adicione um Local</h2>
+        <main className="page contact-us-page">
+            <section className="clean-block clean-form dark">
+                <div className="container">
+                    <div className="block-heading">
+                        <h2 style={{color: "#ff304f"}}>Adicione um Local</h2>
                         <p>Não encontrou um local que conhece? Adicione ele!</p>
                     </div>
                     <form>
-                        <div class="form-group"><label>Nome:</label><input class="form-control" name="nome" onChange={(e) => {setNome(e.target.value);}} type="text"/></div>
-                        <div class="form-group"><label>Descrição:</label><input class="form-control" name="descricao" onChange={(e) => {setDescricao(e.target.value);}} type="text"/></div>
-                        <div class="form-group"><label>Localização:</label><input class="form-control" name="localizacao" onChange={(e) => {setLocalizacao(e.target.value);}} type="text"/></div>
-                        <div class="form-group"><label>Referência:</label><input class="form-control" name="referencia" onChange={(e) => {setReferencia(e.target.value);}} type="text"/></div>
-                        <div class="form-group"><label>Cidade:</label><input class="form-control" name="cidade" onChange={(e) => {setCidade(e.target.value);}} type="text"/></div>
-                        <div class="form-group"><label>UF:</label><select class="form-control" type="text" name="uf" onChange={(e) => {setUf(e.target.value);}}>
+                        <div className="form-group"><label>Nome:</label><input className="form-control" name="nome" onChange={(e) => {setNome(e.target.value);}} type="text"/></div>
+                        <div className="form-group"><label>Descrição:</label><input className="form-control" name="descricao" onChange={(e) => {setDescricao(e.target.value);}} type="text"/></div>
+                        <div className="form-group"><label>Localização:</label><input className="form-control" name="localizacao" onChange={(e) => {setLocalizacao(e.target.value);}} type="text"/></div>
+                        <div className="form-group"><label>Referência:</label><input className="form-control" name="referencia" onChange={(e) => {setReferencia(e.target.value);}} type="text"/></div>
+                        <div className="form-group"><label>Cidade:</label><input className="form-control" name="cidade" onChange={(e) => {setCidade(e.target.value);}} type="text"/></div>
+                        <div className="form-group"><label>UF:</label><select className="form-control" type="text" name="uf" onChange={(e) => {setUf(e.target.value);}}>
                             <optgroup label="Estado">
                                 <option value="AC" selected="">AC</option>
                                 <option value="AL">AL</option>
@@ -74,8 +74,8 @@ const Local = () => {
                             </optgroup>
                             </select>
                         </div>
-                        <div class="form-group"><label>Tags (separadas por vírgula):</label><textarea class="form-control" type="text" name="tags" onChange={(e) => {setTags(e.target.value);}}></textarea></div>
-                        <div class="form-group"><button class="btn btn-primary btn-block" onClick={submitLocal} type="submit">Adicionar Local</button></div>
+                        <div className="form-group"><label>Tags (separadas por vírgula):</label><textarea className="form-control" type="text" name="tags" onChange={(e) => {setTags(e.target.value);}}></textarea></div>
+                        <div className="form-group"><button className="btn btn-primary btn-block" style={{backgroundColor: "#ff304f"}} onClick={submitLocal} type="submit">Adicionar Local</button></div>
                     </form>
                 </div>
             </section>

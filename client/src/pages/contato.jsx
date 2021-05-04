@@ -8,25 +8,25 @@ const Contato = () => {
     <div className="App">
         <body>
         <Header></Header>
-        <main class="page contact-us-page">
-            <section class="clean-block clean-form dark">
-                <div class="container">
-                    <div class="block-heading">
-                        <h2>Contato</h2>
+        <main className="page contact-us-page">
+            <section className="clean-block clean-form dark">
+                <div className="container">
+                    <div className="block-heading">
+                        <h2 style={{color: "#ff304f"}}>Contato</h2>
                         <p>Qualquer dúvida ou sugestão que tiver, entre em contato conosco por email.</p>
                     </div>
                     <form>
-                        <div class="form-group"><label>Nome:</label><input class="form-control" type="text"/></div>
-                        <div class="form-group"><label>Assunto:</label><input class="form-control" type="text"/></div>
-                        <div class="form-group"><label>Email:</label><input class="form-control" type="email"/></div>
-                        <div class="form-group"><label>Mensagem:</label><textarea class="form-control"></textarea></div>
-                        <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Enviar</button></div>
+                        <div className="form-group"><label>Nome:</label><input className="form-control" type="text"/></div>
+                        <div className="form-group"><label>Assunto:</label><input className="form-control" type="text"/></div>
+                        <div className="form-group"><label>Email:</label><input className="form-control" type="email"/></div>
+                        <div className="form-group"><label>Mensagem:</label><textarea className="form-control"></textarea></div>
+                        <div className="form-group"><button className="btn btn-primary btn-block" style={{backgroundColor: "#ff304f"}} type="submit">Enviar</button></div>
                     </form>
                 </div>
             </section>
         </main>
-        <footer class="page-footer dark">
-            <div class="footer-copyright">
+        <footer className="page-footer dark">
+            <div className="footer-copyright">
                 <p>© 2021 MeuGuia LTDA.</p>
             </div>
         </footer>

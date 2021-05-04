@@ -34,24 +34,24 @@ const MainPage = () => {
       <body>
         <Header></Header>
           <main className="page landing-page">
-              <section className="clean-block clean-hero" styles="background-image: url(&quot;../assets/img/background/image4.jpg&quot;);color: rgba(255,48,79,0.73);">
+              <section className="clean-block clean-hero" style={{backgroundImage: "url(../assets/img/background/image4.jpg)",color: "rgba(255,48,79,0.73)"}}>
                   <div className="text">
                       <h1>Levamos você pelo bom caminho!</h1>
-                      <p>Comece já pesquisando a cidade que pretende conhecer melhor.</p><input type="text" name="buscaCidade" onChange={(e) => {setBuscaCidade(e.target.value);}} styles="height: 44px;margin: 9px;padding: 10px;width: 418px;margin-top: 10px;margin-right: 5px;padding-top: 8px;" placeholder="Digite uma cidade para começar."/>
+                      <p>Comece já pesquisando a cidade que pretende conhecer melhor.</p><input type="text" name="buscaCidade" onChange={(e) => {setBuscaCidade(e.target.value);}} style={{height: "44px", margin: "9px", padding: "10px", width: "418px", marginTop: "10px", marginRight: "5px", paddingTop: "8px"}} placeholder="Digite uma cidade para começar."/>
                       <button
                           className="btn btn-outline-light btn-lg" type="button" onClick={getSearchCidade}>Pesquisar</button>
                   </div>
               </section>
               <section className="clean-block clean-info dark">
-                <h3 className="text-center" styles="margin-top: 27px;margin-left: 30px;">{localsListCidade}</h3>
+                <h3 className="text-center" style={{marginTop: "27px", marginLeft: "30px"}}>{localsListCidade}</h3>
               </section>
               <section className="clean-block clean-info dark">
-                  <p className="text-center" styles="font-size: 26px;margin-top: 27px;margin-left: 0px;">Não encontrou seu local?&nbsp;<Link to="/local">Adicione-o!</Link></p>
+                  <p className="text-center" style={{fontSize: "26px", marginTop: "27px", marginLeft: "0px"}}>Não encontrou seu local?&nbsp;<Link to="/local">Adicione-o!</Link></p>
               </section>
               <section className="clean-block slider dark">
                   <div className="container">
                       <div className="block-heading">
-                          <h2 styles="color: rgb(255,48,79);">Conheça o mundo!</h2>
+                          <h2 style={{color: "rgb(255,48,79)"}}>Conheça o mundo!</h2>
                           <p>Trazemos uma comunidade mundial compartilhando comentários e fotos de diversos pontos turísticos para passear, curtir, tirar fotos e muito mai.</p>
                       </div>
                       <div className="carousel slide" data-ride="carousel" id="carousel-1">

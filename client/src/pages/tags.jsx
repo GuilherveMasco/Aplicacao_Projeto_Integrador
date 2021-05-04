@@ -29,22 +29,23 @@ const Tags = () => {
     <div className="App">
       <body>
       <Header></Header>
-            <main class="page">
-                <section class="clean-block features" >
-                    <div class="container">
-                        <div class="block-heading">
+            <main className="page">
+                <section className="clean-block features" style={{paddingTop: "32px", paddingBottom: "304px"}}>
+                    <div className="container">
+                        <div className="block-heading">
                             <h2>Pesquise por tags</h2>
                             <p>Nossos locais possuem um sistema de tags e você pode usar elas para pesquisar pelo que gosta.</p>
                         </div>
-                        <div class="row justify-content-center"><input type="text" name="buscaTag" onChange={(e) => {setBuscaTag(e.target.value);}} placeholder="Pesquise por uma tag."/><button class="btn btn-primary btn-block" onClick={getSearchTag} type="button" >Pesquisar</button></div>
+                        <div className="row justify-content-center"><input type="text" name="buscaTag" onChange={(e) => {setBuscaTag(e.target.value);}} style={{height: "44px", margin: "9px", padding: "10px", width: "418px", marginTop: "10px", marginRight: "5px", paddingTop: "8px"}} placeholder="Pesquise por uma tag."/>
+                        <button className="btn btn-outline-light btn-lg" style={{backgroundColor: "#ff304f", height: "50px", marginTop: "7px"}} onClick={getSearchTag} type="button" >Pesquisar</button></div>
                     </div>
                     <section className="clean-block clean-info dark">
                         <h3 className="text-center" styles="margin-top: 27px;margin-left: 30px;">{localsListTag}</h3>
                     </section>
                 </section>
             </main>
-            <footer class="page-footer dark">
-                <div class="footer-copyright">
+            <footer className="page-footer dark">
+                <div className="footer-copyright">
                     <p>© 2021 MeuGuia LTDA.</p>
                 </div>
             </footer>
