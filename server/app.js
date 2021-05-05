@@ -20,14 +20,17 @@ const db = mysql.createPool({
   app.get("/api/get", (req, res) => {
     var cidade = req.query.buscaCidade;
     cidade = "%" + cidade + "%";
-    console.log(cidade)
     const sqlSelect = "SELECT * FROM local WHERE Cidade_idCidade = (SELECT idCidade FROM Cidade WHERE nome LIKE ?);";
     db.query(sqlSelect, [cidade], (err, result) => {
-      res.send(result);
+      res.status(200).json(result);
       console.log(result)
     });
   });
   
+  app.get('/user', function(req, res) {
+    res.status(200).json({ name: 'john' });
+  });
+
   app.post("/api/insert", (req, res) => {
     const nome = req.body.nome;
     const descricao = req.body.descricao;
