@@ -132,4 +132,33 @@
  Conectar o frontend ao backend e estudar a issue 6
  - Eu vejo algum obstáculo que impeça a mim ou o Time de Desenvolvimento no atendimento da meta da Sprint?
 
- Não houveram dificuldades essa somente, somente a crescente falta de tempo para trabalhar nos códigos.
+ Não houveram dificuldades essa semana somente, somente a crescente falta de tempo para trabalhar nos códigos.
+ 
+ 
+  ## Reunião 06 - 07/05/2021
+
+### Resumo:
+  Nesta reunião atribuímos as tarefas que serão realizadas na sprint final e debatemos alterações no formato do código.
+
+#### Guilherme Bernardo Del Rio
+  - O que eu fiz ontem que ajudou o Time de Desenvolvimento a atender a meta da Sprint? 
+  
+  Continuei a implementação dos testes e pedi auxílio do professor a respeito.
+  - O que eu farei hoje para ajudar o Time de Desenvolvimento atender a meta da Sprint?
+  
+  Trabalharei na issue 5 (adição de fotos no local), começando pela task de adicionar fotos ao Local na tela de cadastrar Local.
+  - Eu vejo algum obstáculo que impeça a mim ou o Time de Desenvolvimento no atendimento da meta da Sprint?
+  
+  Somente pouco tempo para trabalhar no código.
+ 
+#### Guilherme Vasco da Silva
+ - O que eu fiz ontem que ajudou o Time de Desenvolvimento a atender a meta da Sprint? 
+ 
+ Completei a funcionabilidade de adicionar cidade (issue 6), completei a parte visual e resolvi bugs com o bootstrap.
+ - O que eu farei hoje para ajudar o Time de Desenvolvimento atender a meta da Sprint?
+
+ Trabalharei na issue 3 (visualização de comentários), começando pela task de abrir a página do Local escolhido.
+ - Eu vejo algum obstáculo que impeça a mim ou o Time de Desenvolvimento no atendimento da meta da Sprint?
+
+ Somente pouco tempo para trabalhar no código e a necessidade de refatoração do server.
+
