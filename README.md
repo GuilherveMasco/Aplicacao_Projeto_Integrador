@@ -3,6 +3,7 @@ Aplicativo "MeuGuia" para auxilio de localização e compartilhamento de pontos 
 
 ## Execução:
 - Crie o banco de dados na pasta database através do script SQL
+- Atenção na criação do banco de dados, o código espera o padrão de usuário e senha "root - root"
 - Acesse a pasta server
 - Construa o servidor com o comando npm install
 - Execute o servidor com o comando npm run dev
