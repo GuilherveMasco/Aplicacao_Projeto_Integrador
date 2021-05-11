@@ -21,7 +21,7 @@ const db = mysql.createPool({
     var cidade = req.query.buscaCidade;
     cidade = "%" + cidade + "%";
     //console.log(cidade)
-    const sqlSelect = "SELECT * FROM local WHERE Cidade_idCidade = (SELECT idCidade FROM Cidade WHERE nome LIKE ?);";
+    const sqlSelect = "SELECT Local.idLocal, Local.nome, Local.descricao, Cidade.nome AS cidade, Cidade.uf FROM Local, Cidade WHERE Cidade.idCidade = Local.Cidade_idCidade AND Cidade.nome LIKE 'Campo Mourão';";
     db.query(sqlSelect, [cidade], (err, result) => {
       res.send(result);
     });
@@ -31,7 +31,7 @@ const db = mysql.createPool({
     var tag = req.query.buscaTag;
     tag = "%" + tag + "%";
     //console.log(tag)
-    const sqlSelect = "SELECT Local.idLocal, Local.nome, Local.descricao, Local.localizacao, Local.referencia, Local.Cidade_idCidade FROM Local, local_has_tag WHERE Local.idLocal = local_has_tag.Local_idLocal AND local_has_tag.Tag_idTag = (SELECT idTag FROM tag WHERE nome LIKE ?);";
+    const sqlSelect = "SELECT Local.idLocal, Local.nome, Local.descricao, Cidade.nome AS cidade, Cidade.uf FROM Local, Cidade, local_has_tag WHERE Local.idLocal = local_has_tag.Local_idLocal AND local_has_tag.Tag_idTag = (SELECT idTag FROM tag WHERE nome LIKE ?);";
     db.query(sqlSelect, [tag], (err, result) => {
       res.send(result);
     });

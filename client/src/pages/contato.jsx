@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Header from '../components/Header';
-import Axios from "axios";
+import Footer from '../components/Footer';
 
 const Contato = () => {
 
@@ -25,16 +25,7 @@ const Contato = () => {
                 </div>
             </section>
         </main>
-        <footer className="page-footer dark">
-            <div className="footer-copyright">
-                <p>© 2021 MeuGuia LTDA.</p>
-            </div>
-        </footer>
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
-        <script src="assets/js/smoothproducts.min.js"></script>
-        <script src="assets/js/theme.js"></script>
+        <Footer></Footer>
     </body>
     </div>
   );
