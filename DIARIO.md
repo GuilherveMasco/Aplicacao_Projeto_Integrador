@@ -162,3 +162,30 @@
 
  Somente pouco tempo para trabalhar no código e a necessidade de refatoração do server.
 
+
+## Reunião 07 - 01/05/2021
+
+### Resumo:
+  Nesta reunião revisamos reorganizamos o zenhub, as issues e as tarefas da sprint segundo conversado com professor.
+
+#### Guilherme Bernardo Del Rio
+  - O que eu fiz ontem que ajudou o Time de Desenvolvimento a atender a meta da Sprint? 
+  
+  Comecei o trabalho na issue 5.
+  - O que eu farei hoje para ajudar o Time de Desenvolvimento atender a meta da Sprint?
+  
+  Continuarei o trabalho na issue 5 (adição de fotos no local), começando pela task de adicionar fotos ao Local na tela de cadastrar Local.
+  - Eu vejo algum obstáculo que impeça a mim ou o Time de Desenvolvimento no atendimento da meta da Sprint?
+  
+  Somente pouco tempo devido ao final de semestre letivo.
+ 
+#### Guilherme Vasco da Silva
+ - O que eu fiz ontem que ajudou o Time de Desenvolvimento a atender a meta da Sprint? 
+ 
+ Trabalhei na issue 3.
+ - O que eu farei hoje para ajudar o Time de Desenvolvimento atender a meta da Sprint?
+
+ Terminarei a implementação da issue 3.
+ - Eu vejo algum obstáculo que impeça a mim ou o Time de Desenvolvimento no atendimento da meta da Sprint?
+
+ Nenhum.
