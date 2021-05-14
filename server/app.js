@@ -90,4 +90,13 @@ const db = mysql.createPool({
     });
   });
 
+  app.get("/api/getLocal", (req, res) => {
+    var idLocal = req.query.buscaLocal;
+    //console.log(idLocal);
+    const sqlSelect = "SELECT Local.idLocal, Local.nome, Local.descricao, Local.localizacao, Local.referencia, Cidade.nome AS cidade, Cidade.uf FROM Local, Cidade WHERE Local.idLocal = ? AND Cidade.idCidade = Local.Cidade_idCidade;";
+    db.query(sqlSelect, [idLocal], (err, result) => {
+      res.send(result);
+    });
+  });
+
 module.exports = app;
