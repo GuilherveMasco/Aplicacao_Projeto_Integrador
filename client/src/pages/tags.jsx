@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import Axios from "axios";
 
 const Tags = () => {
@@ -14,11 +16,11 @@ const Tags = () => {
         }).then((res) => {
           const listLocalsTag = res.data.map((local) => {
             return (
-                <div>
-                    <a href="localList.html" key={local.nome}>{local.nome}</a>
-                    <p>{local.descricao}</p>
-                    <br/>
-              </div>
+              <div>
+              <Link to={"/vermais/" + local.idLocal}>{local.nome} em {local.cidade} - {local.uf}</Link>
+              <h6>{local.descricao}</h6>
+              <br/>
+            </div>
             );
           });
           setLocalsListTag(listLocalsTag);
@@ -44,16 +46,7 @@ const Tags = () => {
                     </section>
                 </section>
             </main>
-            <footer className="page-footer dark">
-                <div className="footer-copyright">
-                    <p>© 2021 MeuGuia LTDA.</p>
-                </div>
-            </footer>
-            <script src="assets/js/jquery.min.js"></script>
-            <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
-            <script src="assets/js/smoothproducts.min.js"></script>
-            <script src="assets/js/theme.js"></script>
+            <Footer></Footer>
         </body>
     </div>
   );

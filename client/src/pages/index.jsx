@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import Axios from "axios";
 
 const MainPage = () => {
@@ -17,8 +18,8 @@ const MainPage = () => {
       const listLocalsCidade = res.data.map((local) => {
         return (
           <div>
-            <a href="localList.html" key={local.nome}>{local.nome}</a>
-            <p>{local.descricao}</p>
+            <Link to={"/vermais/" + local.idLocal}>{local.nome} em {local.cidade} - {local.uf}</Link>
+            <h6>{local.descricao}</h6>
             <br/>
           </div>
         );
@@ -72,15 +73,7 @@ const MainPage = () => {
               </section>
               <section className="clean-block about-us"></section>
           </main>
-          <footer className="page-footer dark">
-              <div className="footer-copyright">
-                  <p>© 2021 MeuGuia LTDA.</p>
-              </div>
-          </footer>
-          <script src="assets/js/jquery.min.js"></script>
-          <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
-          <script src="assets/js/script.min.js"></script>
+          <Footer></Footer>
       </body>
     </div>
   );

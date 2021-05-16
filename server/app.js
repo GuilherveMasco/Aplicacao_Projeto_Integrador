@@ -17,26 +17,50 @@ const db = mysql.createPool({
   app.use(cors());
   app.use(bodyParser.urlencoded({ extended: true }));
   
+
+  //controllerCidade
   app.get("/api/getCidade", (req, res) => {
     var cidade = req.query.buscaCidade;
     cidade = "%" + cidade + "%";
-    //console.log(cidade)
-    const sqlSelect = "SELECT * FROM local WHERE Cidade_idCidade = (SELECT idCidade FROM Cidade WHERE nome LIKE ?);";
+    const sqlSelect = "SELECT Local.idLocal, Local.nome, Local.descricao, Cidade.nome AS cidade, Cidade.uf FROM Local, Cidade WHERE Cidade.idCidade = Local.Cidade_idCidade AND Cidade.nome LIKE 'Campo Mourão';";
     db.query(sqlSelect, [cidade], (err, result) => {
       res.send(result);
     });
   });
 
+  app.post("/api/insertCidade", (req, res) => {
+    const nome = req.body.nome;
+    const uf = req.body.uf;
+    const sqlCidade = "INSERT INTO Cidade (nome, uf) VALUES (?, ?);";
+    db.query(sqlCidade, [nome, uf], (err, result) => {
+      if (!err) {
+        res.json({ nome, uf });
+      } else {
+      }
+    });
+  });
+
+
+  //controllerTag
   app.get("/api/getTag", (req, res) => {
     var tag = req.query.buscaTag;
     tag = "%" + tag + "%";
-    //console.log(tag)
-    const sqlSelect = "SELECT Local.idLocal, Local.nome, Local.descricao, Local.localizacao, Local.referencia, Local.Cidade_idCidade FROM Local, local_has_tag WHERE Local.idLocal = local_has_tag.Local_idLocal AND local_has_tag.Tag_idTag = (SELECT idTag FROM tag WHERE nome LIKE ?);";
+    const sqlSelect = "SELECT Local.idLocal, Local.nome, Local.descricao, Cidade.nome AS cidade, Cidade.uf FROM Local, Cidade, local_has_tag WHERE Local.idLocal = local_has_tag.Local_idLocal AND local_has_tag.Tag_idTag = (SELECT idTag FROM tag WHERE nome LIKE ?);";
     db.query(sqlSelect, [tag], (err, result) => {
       res.send(result);
     });
   });
+
+  app.get("/api/getTagPage", (req, res) => {
+    var idLocal = req.query.buscaLocal;
+    const sqlSelect = "SELECT Tag.idTag, Tag.nome FROM Tag, Local, local_has_tag WHERE local_has_tag.Local_idLocal = ? AND Tag.idTag = local_has_tag.Tag_idTag;";
+    db.query(sqlSelect, [idLocal], (err, result) => {
+      res.send(result);
+    });
+  });  
   
+
+  //controllerLocal
   app.post("/api/insertLocal", (req, res) => {
     const nome = req.body.nome;
     const descricao = req.body.descricao;
@@ -66,26 +90,42 @@ const db = mysql.createPool({
       var tag = tagsArr[i];
       db.query(sqlTags, [tag, tag], (err, result) => {
         if (err) {
-          //res.status(400).json({ status: "bad request" })
         }
       });
       db.query(sqlFks, [nome, tag], (err, result) => {
         if (err) {
-          //res.status(400).json({ status: "bad request" })
         }
       });
     }
   });
 
-  app.post("/api/insertCidade", (req, res) => {
-    const nome = req.body.nome;
-    const uf = req.body.uf;
-    const sqlCidade = "INSERT INTO Cidade (nome, uf) VALUES (?, ?);";
-    db.query(sqlCidade, [nome, uf], (err, result) => {
+  app.get("/api/getLocal", (req, res) => {
+    var idLocal = req.query.buscaLocal;
+    const sqlSelect = "SELECT Local.idLocal, Local.nome, Local.descricao, Local.localizacao, Local.referencia, Cidade.nome AS cidade, Cidade.uf FROM Local, Cidade WHERE Local.idLocal = ? AND Cidade.idCidade = Local.Cidade_idCidade;";
+    db.query(sqlSelect, [idLocal], (err, result) => {
+      res.send(result);
+    });
+  });
+
+
+  //controllerComentario
+  app.get("/api/getComentarios", (req, res) => {
+    var idLocal = req.query.buscaLocal;
+    const sqlSelect = "SELECT * FROM Comentario WHERE Comentario.Local_idLocal = ?;";
+    db.query(sqlSelect, [idLocal], (err, result) => {
+      res.send(result);
+    });
+  });
+
+  app.post("/api/insertComentario", (req, res) => {
+    const autor = req.body.autor;
+    const conteudo = req.body.conteudo;
+    var idLocal = req.query.buscaLocal;
+    const sqlInsert = "INSERT INTO Comentario (autor, conteudo, Comentario.Local_idLocal) VALUES (?, ?, ?);";
+    db.query(sqlInsert, [autor, conteudo, idLocal], (err, result) => {
       if (!err) {
-        res.json({ nome, uf });
+        res.json({ autor, conteudo });
       } else {
-        //res.status(400).json({ status: "bad request" });
       }
     });
   });
