@@ -9,7 +9,8 @@ class VerMais extends Component {
     state = {
         locais: [],
         comentarios:[],
-        tags:[]
+        tags:[],
+        imagens:[]
     }
     
     componentDidMount() {
@@ -40,6 +41,14 @@ class VerMais extends Component {
         const tags = res.data;
         this.setState({ tags });
         })
+        Axios.get("http://localhost:3001/api/getImagens", {
+            params: {
+              buscaLocal: idLocal,
+            },
+        }).then((res) => {
+        const imagens = res.data;
+        this.setState({ imagens });
+        })
     }
 
     render(){
@@ -57,6 +66,9 @@ class VerMais extends Component {
                             <div className="block-heading">
                                 { this.state.locais.map(local => <h4>Localização: {local.localizacao}, {local.cidade} - {local.uf}</h4>)}
                                 { this.state.locais.map(local => <h4>Referência: {local.referencia}</h4>)}
+                            </div>
+                            <div className="block-heading">
+                                { this.state.imagens.map(imagem => <img src={imagem.imagem}/>)}
                             </div>
                             <div className="block-heading">
                                 <h4>Tags:</h4>

@@ -8,7 +8,7 @@ const db = mysql.createPool({
     host: "localhost",
     port: 3306,
     user: "root",
-    password: "root",
+    password: "password",
     database: "meuguiadb",
     insecureAuth: true,
   });
@@ -22,7 +22,7 @@ const db = mysql.createPool({
   app.get("/api/getCidade", (req, res) => {
     var cidade = req.query.buscaCidade;
     cidade = "%" + cidade + "%";
-    const sqlSelect = "SELECT Local.idLocal, Local.nome, Local.descricao, Cidade.nome AS cidade, Cidade.uf FROM Local, Cidade WHERE Cidade.idCidade = Local.Cidade_idCidade AND Cidade.nome LIKE 'Campo Mourão';";
+    const sqlSelect = "SELECT Local.idLocal, Local.nome, Local.descricao, Cidade.nome AS cidade, Cidade.uf FROM Local, Cidade WHERE Cidade.idCidade = Local.Cidade_idCidade AND Cidade.nome LIKE ?;";
     db.query(sqlSelect, [cidade], (err, result) => {
       res.send(result);
     });
@@ -69,9 +69,9 @@ const db = mysql.createPool({
     const cidade = req.body.cidade;
     const uf = req.body.uf;
     const tags = req.body.tags;
+    const imagem = req.body.imagem;
   
     var tagsArr = tags.split(",");
-  
     const sqlLocal =
       "INSERT INTO Local (nome, descricao, localizacao, referencia, Cidade_idCidade) VALUES (?, ?, ?, ?, (SELECT(idCidade) FROM Cidade WHERE nome = ? AND uf = ?));";
     db.query(sqlLocal, [nome, descricao, localizacao, referencia, cidade, uf], (err, result) => {
@@ -81,7 +81,17 @@ const db = mysql.createPool({
         res.status(400).json({ status: "bad request" });
       }
     });
-  
+    
+    const sqlImagem =
+      "INSERT INTO Imagem (imagem, Local_idLocal) VALUES (?, (SELECT idLocal FROM local WHERE nome = ? AND localizacao = ?));";
+    db.query(sqlImagem, [imagem, nome, localizacao], (err, result) => {
+      if (!err) {
+        //res.json({ imagem, nome, localizacao });
+      } else {
+        //res.status(400).json({ status: "bad request" });
+      }
+    });
+    
     const sqlTags =
       "INSERT INTO Tag (nome) SELECT * FROM(SELECT lower(?) AS nome) AS tmp WHERE NOT EXISTS (SELECT * FROM Tag WHERE nome = lower(?)) LIMIT 1;";
     const sqlFks =
@@ -127,6 +137,15 @@ const db = mysql.createPool({
         res.json({ autor, conteudo });
       } else {
       }
+    });
+  });
+
+  //controller imagens
+  app.get("/api/getImagens", (req, res) => {
+    var idLocal = req.query.buscaLocal;
+    const sqlSelect = "SELECT * FROM imagem WHERE imagem.Local_idLocal = ?;";
+    db.query(sqlSelect, [idLocal], (err, result) => {
+      res.send(result);
     });
   });
 
