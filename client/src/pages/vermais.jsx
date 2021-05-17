@@ -9,11 +9,36 @@ class VerMais extends Component {
     state = {
         locais: [],
         comentarios:[],
-        tags:[]
+        tags:[],
+        autor: '',
+        conteudo: ''
     }
+
+    handleChangeAutor = event => {
+        this.setState({ autor: event.target.value });
+      }
+    handleChangeConteudo = event => {
+        this.setState({ conteudo: event.target.value });
+      }
     
+      handleSubmit = event => {
+        const { idLocal } = this.props.match.params;
+        event.preventDefault();
+    
+        Axios.post("http://localhost:3001/api/insertComentario", { 
+            buscaLocal: idLocal,
+            autor: this.state.autor,
+            conteudo: this.state.conteudo
+         })
+          .then(() => {
+            alert("Obrigado pelo comentário!");
+            window.location.reload();
+          })
+        }
+
     componentDidMount() {
         const { idLocal } = this.props.match.params;
+        
         Axios.get("http://localhost:3001/api/getLocal", {
             params: {
               buscaLocal: idLocal,
@@ -63,9 +88,14 @@ class VerMais extends Component {
                                 { this.state.tags.map(tag => <small>{tag.nome} </small>)}
                             </div>
                             <div className="block-heading">
-                                <form>
-                                    <label>Deixe um comentário:</label><textarea className="form-control"></textarea>
-                                    <button className="btn btn-primary btn-block" style={{backgroundColor: "#ff304f"}} type="submit">Enviar</button>
+                                <form onSubmit={this.handleSubmit}>
+                                    <label>Deixe um comentário: </label>
+                                    <p>Autor:</p>
+                                    <input type="text" name="autor" className="form-control" onChange={this.handleChangeAutor}/>
+                                    <p>Comentário:</p>
+                                    <textarea type="text" name="conteudo" className="form-control" onChange={this.handleChangeConteudo}></textarea>
+                                    <br/>
+                                    <button className="btn btn-primary btn-block" style={{backgroundColor: "#ff304f"}} type="submit">Comentar</button>
                                 </form>    
                                 <h5>Comentários:</h5>
                                 <br/>
