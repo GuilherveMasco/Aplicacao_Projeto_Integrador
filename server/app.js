@@ -111,19 +111,19 @@ const db = mysql.createPool({
   //controllerComentario
   app.get("/api/getComentarios", (req, res) => {
     var idLocal = req.query.buscaLocal;
-    const sqlSelect = "SELECT * FROM Comentario WHERE Comentario.Local_idLocal = ?;";
+    const sqlSelect = "SELECT * FROM Comentario WHERE Comentario.Local_idLocal = ? ORDER BY idComentario DESC;";
     db.query(sqlSelect, [idLocal], (err, result) => {
       res.send(result);
     });
   });
 
   app.post("/api/insertComentario", (req, res) => {
+    var idLocal = req.body.buscaLocal;
     const autor = req.body.autor;
     if (autor == ""){
       autor = "Anônima(o)";
     }
     const conteudo = req.body.conteudo;
-    var idLocal = req.query.buscaLocal;
     const sqlInsert = "INSERT INTO Comentario (autor, conteudo, Comentario.Local_idLocal) VALUES (?, ?, ?);";
     db.query(sqlInsert, [autor, conteudo, idLocal], (err, result) => {
       if (!err) {
