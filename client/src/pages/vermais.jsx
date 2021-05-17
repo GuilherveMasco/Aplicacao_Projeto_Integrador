@@ -14,6 +14,7 @@ class VerMais extends Component {
     
     componentDidMount() {
         const { idLocal } = this.props.match.params;
+        
         Axios.get("http://localhost:3001/api/getLocal", {
             params: {
               buscaLocal: idLocal,

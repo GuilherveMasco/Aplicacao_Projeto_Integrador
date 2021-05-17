@@ -22,7 +22,7 @@ const db = mysql.createPool({
   app.get("/api/getCidade", (req, res) => {
     var cidade = req.query.buscaCidade;
     cidade = "%" + cidade + "%";
-    const sqlSelect = "SELECT Local.idLocal, Local.nome, Local.descricao, Cidade.nome AS cidade, Cidade.uf FROM Local, Cidade WHERE Cidade.idCidade = Local.Cidade_idCidade AND Cidade.nome LIKE 'Campo Mourão';";
+    const sqlSelect = "SELECT Local.idLocal, Local.nome, Local.descricao, Cidade.nome AS cidade, Cidade.uf FROM Local, Cidade WHERE Cidade.idCidade = Local.Cidade_idCidade AND Cidade.nome LIKE ?;";
     db.query(sqlSelect, [cidade], (err, result) => {
       res.send(result);
     });
@@ -119,6 +119,9 @@ const db = mysql.createPool({
 
   app.post("/api/insertComentario", (req, res) => {
     const autor = req.body.autor;
+    if (autor == ""){
+      autor = "Anônima(o)";
+    }
     const conteudo = req.body.conteudo;
     var idLocal = req.query.buscaLocal;
     const sqlInsert = "INSERT INTO Comentario (autor, conteudo, Comentario.Local_idLocal) VALUES (?, ?, ?);";
