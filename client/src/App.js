@@ -8,6 +8,7 @@ import Admin from "./pages/admin";
 import Contato from "./pages/contato";
 import Local from "./pages/local";
 import VerMais from "./pages/vermais";
+import WebControl from "./pages/webcontrol";
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
           <Route exact path="/contato" component={Contato} />
           <Route exact path="/local" component={Local} />
           <Route path="/vermais/:idLocal" component={VerMais} />
+          <Route exact path="/webcontrol" component={WebControl} />
         </Switch>      
       </Router>
     );

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-const AdminPage = () => {
+const WebControl = () => {
 
   return (
     <div className="App">
@@ -29,4 +29,4 @@ const AdminPage = () => {
   );
 }
 
-export default AdminPage;
+export default WebControl;
