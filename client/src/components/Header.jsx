@@ -11,7 +11,6 @@ export const Header = (props) => {
                           <li className="nav-item" role="presentation"><Link className="nav-link" activeClassName="nav-link active" to="/">início</Link></li>
                           <li className="nav-item" role="presentation"><Link className="nav-link" activeClassName="nav-link active" to="/tags">tags</Link></li>
                           <li className="nav-item" role="presentation"><Link className="nav-link" activeClassName="nav-link active" to="/cidades">cidades</Link></li>
-                          <li className="nav-item" role="presentation"><Link className="nav-link" activeClassName="nav-link active" to="/admin">administração</Link></li>
                           <li className="nav-item" role="presentation"><Link className="nav-link" activeClassName="nav-link active" to="/contato">contato</Link></li>
                       </ul>
                   </div>
