@@ -40,8 +40,36 @@ const db = mysql.createPool({
     });
   });
 
+  app.post("/api/rmCidade", (req, res) => {
+    const idCidade = req.body.idCidade;
+    const sqlDelete1 = "DELETE Comentario FROM Local, Comentario WHERE Local.Cidade_idCidade = ? AND Comentario.Local_idLocal = Local.idLocal;";
+    db.query(sqlDelete1, [idCidade], (err, result) => {
+      if (!err) {
+      } else {
+      }
+    });
+    const sqlDelete2 = "DELETE local_has_tag FROM Local, local_has_tag WHERE Local.Cidade_idCidade = ? AND local_has_tag.Local_idLocal = Local.idLocal;";
+    db.query(sqlDelete2, [idCidade], (err, result) => {
+      if (!err) {
+      } else {
+      }
+    });
+    const sqlDelete3 = "DELETE FROM Local WHERE Cidade_idCidade = ?;";
+    db.query(sqlDelete3, [idCidade], (err, result) => {
+      if (!err) {
+      } else {
+      }
+    });
+    const sqlDelete4 = "DELETE FROM Cidade WHERE idCidade = ?;";
+    db.query(sqlDelete4, [idCidade], (err, result) => {
+      if (!err) {
+      } else {
+      }
+    });
+  });
+
   app.get("/api/listCidades", (req, res) => {
-    const sqlSelect = "SELECT * FROM Cidade BY idCidade DESC;";
+    const sqlSelect = "SELECT * FROM Cidade;";
     db.query(sqlSelect,[], (err, result) => {
       res.send(result);
     });
@@ -107,7 +135,7 @@ const db = mysql.createPool({
   });
 
   app.get("/api/listLocais", (req, res) => {
-    const sqlSelect = "SELECT * FROM Local BY idLocal DESC;";
+    const sqlSelect = "SELECT * FROM Local;";
     db.query(sqlSelect,[], (err, result) => {
       res.send(result);
     });
@@ -156,7 +184,7 @@ const db = mysql.createPool({
 
   app.post("/api/rmComentario", (req, res) => {
     const idComentario = req.body.idComentario;
-    const sqlDelete = "DELETE FROM Comentario Where idComentario = ?;";
+    const sqlDelete = "DELETE FROM Comentario WHERE idComentario = ?;";
     db.query(sqlDelete, [idComentario], (err, result) => {
       if (!err) {
         res.json({ idComentario });
