@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import Axios from "axios";
 
-const rmImagens = () => {
+class rmImagens extends Component {
 
+  render(){
   return (
     <div className="App">
         <body>
@@ -12,6 +15,7 @@ const rmImagens = () => {
     </body>
     </div>
   );
+  }
 }
 
 export default rmImagens;
