@@ -60,7 +60,7 @@ const db = mysql.createPool({
 
   app.get("/api/getTagPage", (req, res) => {
     var idLocal = req.query.buscaLocal;
-    const sqlSelect = "SELECT Tag.idTag, Tag.nome FROM Tag, Local, local_has_tag WHERE local_has_tag.Local_idLocal = ? AND Tag.idTag = local_has_tag.Tag_idTag;";
+    const sqlSelect = "SELECT DISTINCT Tag.idTag, Tag.nome FROM Tag, Local, local_has_tag WHERE local_has_tag.Local_idLocal = ? AND Tag.idTag = local_has_tag.Tag_idTag;";
     db.query(sqlSelect, [idLocal], (err, result) => {
       res.send(result);
     });
