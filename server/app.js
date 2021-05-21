@@ -134,13 +134,6 @@ const db = mysql.createPool({
     }
   });
 
-  app.get("/api/listLocais", (req, res) => {
-    const sqlSelect = "SELECT * FROM Local;";
-    db.query(sqlSelect,[], (err, result) => {
-      res.send(result);
-    });
-  });
-
   app.get("/api/getLocal", (req, res) => {
     var idLocal = req.query.buscaLocal;
     const sqlSelect = "SELECT Local.idLocal, Local.nome, Local.descricao, Local.localizacao, Local.referencia, Cidade.nome AS cidade, Cidade.uf FROM Local, Cidade WHERE Local.idLocal = ? AND Cidade.idCidade = Local.Cidade_idCidade;";
@@ -148,8 +141,31 @@ const db = mysql.createPool({
       res.send(result);
     });
   });
+  
+  app.get("/api/listLocais", (req, res) => {
+    const sqlSelect = "SELECT * FROM Local;";
+    db.query(sqlSelect,[], (err, result) => {
+      res.send(result);
+    });
+  });
 
-
+  app.post("/api/rmLocal", (req, res) => {
+    const idLocal = req.body.idLocal;
+    const sqlDelete1 = "DELETE FROM local_has_tag WHERE Local_idLocal = ?;";
+    db.query(sqlDelete1, [idLocal], (err, result) => {
+      if (!err) {
+      } else {
+      }
+    });
+    const sqlDelete2 = "DELETE FROM Local WHERE idLocal = ?;";
+    db.query(sqlDelete2, [idLocal], (err, result) => {
+      if (!err) {
+        res.json({idLocal});
+      } else {
+      }
+    });
+  });
+  
   //controllerComentario
   app.get("/api/getComentarios", (req, res) => {
     var idLocal = req.query.buscaLocal;
