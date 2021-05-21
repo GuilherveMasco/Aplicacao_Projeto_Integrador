@@ -149,4 +149,16 @@ const db = mysql.createPool({
     });
   });
 
+  app.post("/api/insertImagem", (req, res) => {
+    var idLocal = req.body.buscaLocal;
+    const imagem = req.body.novaImagem;
+    
+    const sqlInsertImagem = "INSERT INTO Imagem (imagem, Local_idLocal) VALUES (?, ?);";
+    db.query(sqlInsertImagem, [imagem, idLocal], (err, result) => {
+      if (!err) {
+        //res.json({ autor, conteudo });
+      } else {
+      }
+    });
+  });
 module.exports = app;

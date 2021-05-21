@@ -10,9 +10,27 @@ class VerMais extends Component {
         locais: [],
         comentarios:[],
         tags:[],
-        imagens:[]
+        imagens:[],
+        novaImagem:""
     }
+    handleChangeImagem = event => {
+        this.setState({ novaImagem: event.target.value });
+      }
     
+      handleSubmit = event => {
+        const { idLocal } = this.props.match.params;
+        event.preventDefault();
+    
+        Axios.post("http://localhost:3001/api/insertImagem", { 
+            buscaLocal: idLocal,
+            novaImagem: this.state.novaImagem,
+         })
+          .then(() => {
+            alert("Imagem inserida com sucesso!");
+            window.location.reload();
+          })
+        }
+
     componentDidMount() {
         const { idLocal } = this.props.match.params;
         Axios.get("http://localhost:3001/api/getLocal", {
@@ -49,6 +67,7 @@ class VerMais extends Component {
         const imagens = res.data;
         this.setState({ imagens });
         })
+        
     }
 
     render(){
@@ -73,6 +92,12 @@ class VerMais extends Component {
                             <div className="block-heading">
                                 <h4>Tags:</h4>
                                 { this.state.tags.map(tag => <small>{tag.nome} </small>)}
+                            </div>
+                            <div className="block-heading">
+                                <form onSubmit={this.handleSubmit}>
+                                <label>Adicione uma imagem ao local:</label><input className="form-control" name="novaImagem" onChange={this.handleChangeImagem} type="file"/>
+                                <button className="btn btn-primary btn-block" style={{backgroundColor: "#ff304f"}} type="submit">Adicionar</button>
+                                </form>
                             </div>
                             <div className="block-heading">
                                 <form>
