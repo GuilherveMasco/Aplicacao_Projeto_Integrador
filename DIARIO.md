@@ -216,3 +216,31 @@
  - Eu vejo algum obstáculo que impeça a mim ou o Time de Desenvolvimento no atendimento da meta da Sprint?
 
  A necessidade de refatorar o backend parece pesar no tempo disponível, começo a me questionar se essa refatoração é mesmo necessária.
+ 
+ ## Reunião 09 - 23/05/2021
+
+### Resumo:
+  Nesta reunião debatemos quais serão as últimas atividades realizadas referente a essa sprint e decidimos abortar a issue 16. Após análise, concluímos que a realização dessa issue tomaria mais tempo do que o que possuímos e a prioridade é a entrega das funcionalidades.
+
+#### Guilherme Bernardo Del Rio
+  - O que eu fiz ontem que ajudou o Time de Desenvolvimento a atender a meta da Sprint? 
+  
+  Conclui a segunda subtarefa da issue 5 e implementei a terceira, porém está com bugs.
+  - O que eu farei hoje para ajudar o Time de Desenvolvimento atender a meta da Sprint?
+  
+  Resolverei o bug da ultima tarefa da issue 5.
+  - Eu vejo algum obstáculo que impeça a mim ou o Time de Desenvolvimento no atendimento da meta da Sprint?
+  
+  Apenas pouco tempo de estudo devido a exames e idas ao hospital.
+ 
+#### Guilherme Vasco da Silva
+ - O que eu fiz ontem que ajudou o Time de Desenvolvimento a atender a meta da Sprint? 
+ 
+ Concluí as issues 9, 11 e 12, todas referentes ao sistema webcontrol para administradores. Também realizei parte das tarefas da issue 17 de refatoração do frontend.
+ - O que eu farei hoje para ajudar o Time de Desenvolvimento atender a meta da Sprint?
+
+ Terminarei o arquivo de população de banco de dados para teste e auxiliarei meu companheiro em finalizar suas tarefas.
+ - Eu vejo algum obstáculo que impeça a mim ou o Time de Desenvolvimento no atendimento da meta da Sprint?
+
+ Nenhum.
+
