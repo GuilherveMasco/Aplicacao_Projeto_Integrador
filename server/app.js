@@ -146,13 +146,14 @@ const db = mysql.createPool({
     const sqlSelect = "SELECT * FROM imagem WHERE imagem.Local_idLocal = ?;";
     db.query(sqlSelect, [idLocal], (err, result) => {
       res.send(result);
+      console.log("resultado da requisição das imagens",result)
     });
   });
 
   app.post("/api/insertImagem", (req, res) => {
     var idLocal = req.body.buscaLocal;
     const imagem = req.body.novaImagem;
-    
+    console.log("imagem recebida:", imagem)
     const sqlInsertImagem = "INSERT INTO Imagem (imagem, Local_idLocal) VALUES (?, ?);";
     db.query(sqlInsertImagem, [imagem, idLocal], (err, result) => {
       if (!err) {
