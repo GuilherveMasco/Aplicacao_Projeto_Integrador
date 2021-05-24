@@ -81,7 +81,7 @@ app.get("/api/getTag", (req, res) => {
   var tag = req.query.buscaTag;
   tag = "%" + tag + "%";
   const sqlSelect =
-    "SELECT Local.idLocal, Local.nome, Local.descricao, Cidade.nome AS cidade, Cidade.uf FROM Local, Cidade, local_has_tag WHERE Local.idLocal = local_has_tag.Local_idLocal AND local_has_tag.Tag_idTag = (SELECT idTag FROM tag WHERE nome LIKE ?);";
+    "SELECT Local.idLocal, Local.nome, Local.descricao, Cidade.nome AS cidade, Cidade.uf FROM Local, Cidade, local_has_tag WHERE Local.idLocal = local_has_tag.Local_idLocal AND local_has_tag.Tag_idTag = (SELECT idTag FROM tag WHERE nome LIKE ?) AND Local.Cidade_idCidade = Cidade.idCidade;";
   db.query(sqlSelect, [tag], (err, result) => {
     res.send(result);
   });
