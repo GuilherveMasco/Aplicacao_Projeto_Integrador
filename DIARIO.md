@@ -163,7 +163,7 @@
  Somente pouco tempo para trabalhar no código e a necessidade de refatoração do server.
 
 
-## Reunião 07 - 01/05/2021
+## Reunião 07 - 11/05/2021
 
 ### Resumo:
   Nesta reunião revisamos reorganizamos o zenhub, as issues e as tarefas da sprint segundo conversado com professor.
@@ -189,3 +189,58 @@
  - Eu vejo algum obstáculo que impeça a mim ou o Time de Desenvolvimento no atendimento da meta da Sprint?
 
  Nenhum.
+
+## Reunião 08 - 17/05/2021
+
+### Resumo:
+  Nesta reunião debatemos o que será feito durante a semana, os problemas que tivemos, as issues que concluímos e decidimos fechar a issue 13, pois sua funcionalidade não parece ser relevante.
+
+#### Guilherme Bernardo Del Rio
+  - O que eu fiz ontem que ajudou o Time de Desenvolvimento a atender a meta da Sprint? 
+  
+  Estudei o necessário para realizar a issue 5 (blob de arquivos) e trabalhei nela, concluindo sua primeira subtarefa.
+  - O que eu farei hoje para ajudar o Time de Desenvolvimento atender a meta da Sprint?
+  
+  Continuarei o trabalho na issue 5 e terminarei as duas outras subtarefas.
+  - Eu vejo algum obstáculo que impeça a mim ou o Time de Desenvolvimento no atendimento da meta da Sprint?
+  
+  Ao longo da semana tive alguns problemas de saúde que me impediram de me dedicar muito essa semana, mas parece essa próxima as dificuldades serão menores.
+ 
+#### Guilherme Vasco da Silva
+ - O que eu fiz ontem que ajudou o Time de Desenvolvimento a atender a meta da Sprint? 
+ 
+ Conclui as issue 3 e issue 4, revisei nossas issues e realizei pull requests para a main das issues concluídas.
+ - O que eu farei hoje para ajudar o Time de Desenvolvimento atender a meta da Sprint?
+
+ Começarei a implementação da issue 9 e, por consequência, também das issue 10, 11 e 12.
+ - Eu vejo algum obstáculo que impeça a mim ou o Time de Desenvolvimento no atendimento da meta da Sprint?
+
+ A necessidade de refatorar o backend parece pesar no tempo disponível, começo a me questionar se essa refatoração é mesmo necessária.
+ 
+ ## Reunião 09 - 23/05/2021
+
+### Resumo:
+  Nesta reunião debatemos quais serão as últimas atividades realizadas referente a essa sprint e decidimos abortar a issue 16. Após análise, concluímos que a realização dessa issue tomaria mais tempo do que o que possuímos e a prioridade é a entrega das funcionalidades.
+
+#### Guilherme Bernardo Del Rio
+  - O que eu fiz ontem que ajudou o Time de Desenvolvimento a atender a meta da Sprint? 
+  
+  Conclui a segunda subtarefa da issue 5 e implementei a terceira, porém está com bugs.
+  - O que eu farei hoje para ajudar o Time de Desenvolvimento atender a meta da Sprint?
+  
+  Resolverei o bug da ultima tarefa da issue 5.
+  - Eu vejo algum obstáculo que impeça a mim ou o Time de Desenvolvimento no atendimento da meta da Sprint?
+  
+  Apenas pouco tempo de estudo devido a exames e idas ao hospital.
+ 
+#### Guilherme Vasco da Silva
+ - O que eu fiz ontem que ajudou o Time de Desenvolvimento a atender a meta da Sprint? 
+ 
+ Concluí as issues 9, 11 e 12, todas referentes ao sistema webcontrol para administradores. Também realizei parte das tarefas da issue 17 de refatoração do frontend.
+ - O que eu farei hoje para ajudar o Time de Desenvolvimento atender a meta da Sprint?
+
+ Terminarei o arquivo de população de banco de dados para teste e auxiliarei meu companheiro em finalizar suas tarefas.
+ - Eu vejo algum obstáculo que impeça a mim ou o Time de Desenvolvimento no atendimento da meta da Sprint?
+
+ Nenhum.
+

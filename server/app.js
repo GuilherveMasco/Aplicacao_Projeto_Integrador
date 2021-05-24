@@ -40,6 +40,41 @@ const db = mysql.createPool({
     });
   });
 
+  app.post("/api/rmCidade", (req, res) => {
+    const idCidade = req.body.idCidade;
+    const sqlDelete1 = "DELETE Comentario FROM Local, Comentario WHERE Local.Cidade_idCidade = ? AND Comentario.Local_idLocal = Local.idLocal;";
+    db.query(sqlDelete1, [idCidade], (err, result) => {
+      if (!err) {
+      } else {
+      }
+    });
+    const sqlDelete2 = "DELETE local_has_tag FROM Local, local_has_tag WHERE Local.Cidade_idCidade = ? AND local_has_tag.Local_idLocal = Local.idLocal;";
+    db.query(sqlDelete2, [idCidade], (err, result) => {
+      if (!err) {
+      } else {
+      }
+    });
+    const sqlDelete3 = "DELETE FROM Local WHERE Cidade_idCidade = ?;";
+    db.query(sqlDelete3, [idCidade], (err, result) => {
+      if (!err) {
+      } else {
+      }
+    });
+    const sqlDelete4 = "DELETE FROM Cidade WHERE idCidade = ?;";
+    db.query(sqlDelete4, [idCidade], (err, result) => {
+      if (!err) {
+      } else {
+      }
+    });
+  });
+
+  app.get("/api/listCidades", (req, res) => {
+    const sqlSelect = "SELECT * FROM Cidade;";
+    db.query(sqlSelect,[], (err, result) => {
+      res.send(result);
+    });
+  });
+
 
   //controllerTag
   app.get("/api/getTag", (req, res) => {
@@ -53,7 +88,7 @@ const db = mysql.createPool({
 
   app.get("/api/getTagPage", (req, res) => {
     var idLocal = req.query.buscaLocal;
-    const sqlSelect = "SELECT Tag.idTag, Tag.nome FROM Tag, Local, local_has_tag WHERE local_has_tag.Local_idLocal = ? AND Tag.idTag = local_has_tag.Tag_idTag;";
+    const sqlSelect = "SELECT DISTINCT Tag.idTag, Tag.nome FROM Tag, Local, local_has_tag WHERE local_has_tag.Local_idLocal = ? AND Tag.idTag = local_has_tag.Tag_idTag;";
     db.query(sqlSelect, [idLocal], (err, result) => {
       res.send(result);
     });
@@ -116,21 +151,47 @@ const db = mysql.createPool({
       res.send(result);
     });
   });
+  
+  app.get("/api/listLocais", (req, res) => {
+    const sqlSelect = "SELECT * FROM Local;";
+    db.query(sqlSelect,[], (err, result) => {
+      res.send(result);
+    });
+  });
 
-
+  app.post("/api/rmLocal", (req, res) => {
+    const idLocal = req.body.idLocal;
+    const sqlDelete1 = "DELETE FROM local_has_tag WHERE Local_idLocal = ?;";
+    db.query(sqlDelete1, [idLocal], (err, result) => {
+      if (!err) {
+      } else {
+      }
+    });
+    const sqlDelete2 = "DELETE FROM Local WHERE idLocal = ?;";
+    db.query(sqlDelete2, [idLocal], (err, result) => {
+      if (!err) {
+        res.json({idLocal});
+      } else {
+      }
+    });
+  });
+  
   //controllerComentario
   app.get("/api/getComentarios", (req, res) => {
     var idLocal = req.query.buscaLocal;
-    const sqlSelect = "SELECT * FROM Comentario WHERE Comentario.Local_idLocal = ?;";
+    const sqlSelect = "SELECT * FROM Comentario WHERE Comentario.Local_idLocal = ? ORDER BY idComentario DESC;";
     db.query(sqlSelect, [idLocal], (err, result) => {
       res.send(result);
     });
   });
 
   app.post("/api/insertComentario", (req, res) => {
+    var idLocal = req.body.buscaLocal;
     const autor = req.body.autor;
+    if (autor == ""){
+      autor = "Anônima(o)";
+    }
     const conteudo = req.body.conteudo;
-    var idLocal = req.query.buscaLocal;
     const sqlInsert = "INSERT INTO Comentario (autor, conteudo, Comentario.Local_idLocal) VALUES (?, ?, ?);";
     db.query(sqlInsert, [autor, conteudo, idLocal], (err, result) => {
       if (!err) {
@@ -139,7 +200,6 @@ const db = mysql.createPool({
       }
     });
   });
-
   //controller imagens
   app.get("/api/getImagens", (req, res) => {
     var idLocal = req.query.buscaLocal;
@@ -158,8 +218,22 @@ const db = mysql.createPool({
     db.query(sqlInsertImagem, [imagem, idLocal], (err, result) => {
       if (!err) {
         //res.json({ autor, conteudo });
+  app.get("/api/listComentarios", (req, res) => {
+    const sqlSelect = "SELECT * FROM Comentario";
+    db.query(sqlSelect,[], (err, result) => {
+      res.send(result);
+    });
+  });
+
+  app.post("/api/rmComentario", (req, res) => {
+    const idComentario = req.body.idComentario;
+    const sqlDelete = "DELETE FROM Comentario WHERE idComentario = ?;";
+    db.query(sqlDelete, [idComentario], (err, result) => {
+      if (!err) {
+        res.json({ idComentario });
       } else {
       }
     });
   });
+
 module.exports = app;
