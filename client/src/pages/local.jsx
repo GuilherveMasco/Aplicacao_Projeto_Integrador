@@ -11,7 +11,13 @@ const Local = () => {
     const [cidade, setCidade] = useState("");
     const [uf, setUf] = useState("");
     const [tags, setTags] = useState("");
-    
+    const [imagem, setImagem] = useState(null)
+    const onChangePicture = e => {
+        var imagens = URL.createObjectURL(e.target.files[0])
+        console.log(imagens)
+        setImagem( imagens );
+    };
+
     const submitLocal = () => {
         Axios.post("http://localhost:3001/api/insertLocal", {
           nome: nome,
@@ -21,6 +27,7 @@ const Local = () => {
           cidade: cidade,
           uf: uf,
           tags: tags,
+          imagem: imagem,
         }).then(() => {
           alert("Cadastrado com sucesso!");
         });
@@ -76,6 +83,7 @@ const Local = () => {
                             </select>
                         </div>
                         <div className="form-group"><label>Tags (separadas por vírgula):</label><textarea className="form-control" type="text" name="tags" onChange={(e) => {setTags(e.target.value);}}></textarea></div>
+                        <div className="form-group"><label>Selecionar Imagem:</label><input className="form-control" name="imagem" onChange={onChangePicture} type="file"/></div>
                         <div className="form-group"><button className="btn btn-primary btn-block" style={{backgroundColor: "#ff304f"}} onClick={submitLocal} type="submit">Adicionar Local</button></div>
                     </form>
                 </div>

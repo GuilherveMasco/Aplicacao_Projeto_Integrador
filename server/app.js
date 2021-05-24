@@ -8,7 +8,7 @@ const db = mysql.createPool({
     host: "localhost",
     port: 3306,
     user: "root",
-    password: "root",
+    password: "password",
     database: "meuguiadb",
     insecureAuth: true,
   });
@@ -104,9 +104,9 @@ const db = mysql.createPool({
     const cidade = req.body.cidade;
     const uf = req.body.uf;
     const tags = req.body.tags;
+    const imagem = req.body.imagem;
   
     var tagsArr = tags.split(",");
-  
     const sqlLocal =
       "INSERT INTO Local (nome, descricao, localizacao, referencia, Cidade_idCidade) VALUES (?, ?, ?, ?, (SELECT(idCidade) FROM Cidade WHERE nome = ? AND uf = ?));";
     db.query(sqlLocal, [nome, descricao, localizacao, referencia, cidade, uf], (err, result) => {
@@ -116,7 +116,17 @@ const db = mysql.createPool({
         res.status(400).json({ status: "bad request" });
       }
     });
-  
+    
+    const sqlImagem =
+      "INSERT INTO Imagem (imagem, Local_idLocal) VALUES (?, (SELECT idLocal FROM local WHERE nome = ? AND localizacao = ?));";
+    db.query(sqlImagem, [imagem, nome, localizacao], (err, result) => {
+      if (!err) {
+        //res.json({ imagem, nome, localizacao });
+      } else {
+        //res.status(400).json({ status: "bad request" });
+      }
+    });
+    
     const sqlTags =
       "INSERT INTO Tag (nome) SELECT * FROM(SELECT lower(?) AS nome) AS tmp WHERE NOT EXISTS (SELECT * FROM Tag WHERE nome = lower(?)) LIMIT 1;";
     const sqlFks =
@@ -190,7 +200,24 @@ const db = mysql.createPool({
       }
     });
   });
+  //controller imagens
+  app.get("/api/getImagens", (req, res) => {
+    var idLocal = req.query.buscaLocal;
+    const sqlSelect = "SELECT * FROM imagem WHERE imagem.Local_idLocal = ?;";
+    db.query(sqlSelect, [idLocal], (err, result) => {
+      res.send(result);
+      console.log("resultado da requisição das imagens",result)
+    });
+  });
 
+  app.post("/api/insertImagem", (req, res) => {
+    var idLocal = req.body.buscaLocal;
+    const imagem = req.body.novaImagem;
+    console.log("imagem recebida:", imagem)
+    const sqlInsertImagem = "INSERT INTO Imagem (imagem, Local_idLocal) VALUES (?, ?);";
+    db.query(sqlInsertImagem, [imagem, idLocal], (err, result) => {
+      if (!err) {
+        //res.json({ autor, conteudo });
   app.get("/api/listComentarios", (req, res) => {
     const sqlSelect = "SELECT * FROM Comentario";
     db.query(sqlSelect,[], (err, result) => {
