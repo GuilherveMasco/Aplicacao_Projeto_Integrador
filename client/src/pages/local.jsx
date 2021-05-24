@@ -13,7 +13,9 @@ const Local = () => {
     const [tags, setTags] = useState("");
     const [imagem, setImagem] = useState(null)
     const onChangePicture = e => {
-        setImagem(URL.createObjectURL(e.target.files[0]) );
+        var imagens = URL.createObjectURL(e.target.files[0])
+        console.log(imagens)
+        setImagem( imagens );
     };
 
     const submitLocal = () => {

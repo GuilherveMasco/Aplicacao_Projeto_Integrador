@@ -18,7 +18,7 @@ class VerMais extends Component {
     }
   };
 
-  handleSubmit = (event) => {
+  handleSubmitImage = (event) => {
     const { idLocal } = this.props.match.params;
     event.preventDefault();
 
@@ -110,7 +110,7 @@ class VerMais extends Component {
                     ))}
                   </div>
                   <div className="block-heading">
-                    <form onSubmit={this.handleSubmit}>
+                    <form onSubmit={this.handleSubmitImage}>
                       <label>Adicione uma imagem ao local:</label>
                       <input className="form-control" name="novaImagem" onChange={this.handleChangeImagem} type="file" />
                       <button className="btn btn-primary btn-block" style={{ backgroundColor: "#ff304f" }} type="submit">
