@@ -9,8 +9,8 @@ Aplicativo "MeuGuia" para auxilio de localização e compartilhamento de pontos 
 - Construa o servidor com o comando npm install
 - Execute o servidor com o comando npm run dev
 - Acesse a pasta client
-- Execute o cliente com o comando npm start
 - Construa o cliente com o comando npm install
+- Execute o cliente com o comando npm start
 
 ## Funcionamento:
 - Através da página inicial é possível pesquisar um nome de cidade (inteiro ou parcial) e é retornado uma lista de pontos turísticos cadastrados no local
